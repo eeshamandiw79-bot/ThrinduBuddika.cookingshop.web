@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>තරිඳු බුද්ධික | Home Kitchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Sinhala:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #ffffff;
+    --ink: #221d1a;
+    --ink-soft: #6b6058;
+    --chili: #c1440e;
+    --turmeric: #e6a13d;
+    --clove: #3c2f27;
+    --line: #ece5dd;
+    --cream: #fbf8f4;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Noto Sans Sinhala', sans-serif;
+    font-weight:400;
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Noto Serif Sinhala', serif;
+    font-weight:600;
+    letter-spacing:0;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+    max-width:1080px; margin:0 auto;
+  }
+  .brand{
+    font-family:'Noto Serif Sinhala', serif;
+    font-size:1.15rem;
+    font-weight:600;
+    display:flex; align-items:center; gap:10px;
+  }
+  .brand .dot{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--chili);
+    display:inline-block;
+  }
+  nav.links{display:flex; gap:32px; font-size:0.92rem; color:var(--ink-soft);}
+  nav.links a:hover{color:var(--chili);}
+  .call-btn{
+    background:var(--chili);
+    color:#fff;
+    padding:10px 20px;
+    border-radius:100px;
+    font-size:0.88rem;
+    font-weight:500;
+    white-space:nowrap;
+  }
+  .call-btn:hover{background:#a53a0c;}
+  .menu-toggle{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:100px 32px 80px;
+    max-width:1080px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .eyebrow{
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--chili);
+    font-weight:600;
+    margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:26px; height:1px;
+    background:var(--chili);
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4rem);
+    line-height:1.04;
+    color:var(--clove);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--chili);
+  }
+  .hero p.lede{
+    margin-top:26px;
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-ctas{
+    margin-top:36px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--clove);
+    color:#fff;
+    padding:14px 28px;
+    border-radius:100px;
+    font-size:0.94rem;
+    font-weight:500;
+  }
+  .btn-primary:hover{background:#241b15;}
+  .btn-ghost{
+    border:1px solid var(--line);
+    padding:14px 28px;
+    border-radius:100px;
+    font-size:0.94rem;
+    color:var(--ink);
+  }
+  .btn-ghost:hover{border-color:var(--chili); color:var(--chili);}
+
+  /* Signature badge - the "12 hour" stamp */
+  .hero-badge{
+    justify-self:end;
+    position:relative;
+    width:230px; height:230px;
+    border-radius:50%;
+    border:1.5px dashed var(--turmeric);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .hero-badge-inner{
+    width:190px; height:190px;
+    border-radius:50%;
+    background:var(--clove);
+    color:#fff;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center;
+  }
+  .hero-badge-inner .num{
+    font-family:'Noto Serif Sinhala', serif;
+    font-size:3.2rem;
+    font-weight:700;
+    line-height:1;
+  }
+  .hero-badge-inner .unit{
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    margin-top:2px;
+    color:var(--turmeric);
+  }
+  .hero-badge-inner .cap{
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    color:#d8cfc6;
+    margin-top:10px;
+    max-width:120px;
+  }
+
+  /* ---------- Strip / trust bar ---------- */
+  .strip{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--cream);
+  }
+  .strip .wrap{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
+    padding:26px 32px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+  }
+  .strip .item{display:flex; align-items:center; gap:10px;}
+  .strip .item .k{color:var(--clove); font-weight:600;}
+
+  /* ---------- Section shared ---------- */
+  section{padding:96px 32px;}
+  section .wrap{padding:0;}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    margin-bottom:52px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 3vw, 2.6rem);
+    color:var(--clove);
+  }
+  .section-head p{
+    color:var(--ink-soft);
+    max-width:38ch;
+    font-size:0.98rem;
+  }
+
+  /* ---------- About ---------- */
+  .about{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:start;
+  }
+  .about-quote{
+    font-family:'Noto Serif Sinhala', serif;
+    font-style:italic;
+    font-size:1.5rem;
+    line-height:1.4;
+    color:var(--clove);
+    border-left:2px solid var(--chili);
+    padding-left:24px;
+  }
+  .about-text p{
+    color:var(--ink-soft);
+    margin-bottom:18px;
+    font-size:1rem;
+  }
+  .about-text p:last-child{margin-bottom:0;}
+
+  /* ---------- Specialties ---------- */
+  .specialties-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .spec-card{
+    background:#fff;
+    padding:38px 30px;
+    transition:background 0.25s ease;
+  }
+  .spec-card:hover{background:var(--cream);}
+  .spec-card .tag{
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--turmeric);
+    font-weight:600;
+  }
+  .spec-card h3{
+    font-size:1.3rem;
+    margin-top:12px;
+    color:var(--clove);
+  }
+  .spec-card p{
+    color:var(--ink-soft);
+    font-size:0.92rem;
+    margin-top:10px;
+  }
+
+  /* ---------- Hours strip / signature timeline ---------- */
+  .hours{
+    background:var(--clove);
+    color:#fff;
+  }
+  .hours .section-head h2, .hours .section-head p{color:#fff;}
+  .hours .section-head p{color:#cfc4b8;}
+  .hours-track{
+    position:relative;
+    padding-top:20px;
+  }
+  .hours-track .rail{
+    position:absolute;
+    top:26px; left:0; right:0;
+    height:1px;
+    background:rgba(255,255,255,0.18);
+  }
+  .hours-points{
+    display:flex;
+    justify-content:space-between;
+    position:relative;
+  }
+  .hpoint{
+    display:flex; flex-direction:column; align-items:center;
+    gap:14px;
+    text-align:center;
+    flex:1;
+  }
+  .hpoint .mark{
+    width:10px; height:10px; border-radius:50%;
+    background:var(--turmeric);
+    z-index:2;
+  }
+  .hpoint .time{font-size:0.8rem; color:#cfc4b8;}
+  .hpoint .label{font-size:0.92rem; font-weight:500;}
+
+  /* ---------- Contact ---------- */
+  .contact{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .contact h2{
+    font-size:clamp(1.9rem, 3vw, 2.6rem);
+    color:var(--clove);
+    margin-bottom:20px;
+  }
+  .contact p.sub{
+    color:var(--ink-soft);
+    max-width:42ch;
+    margin-bottom:34px;
+  }
+  .contact-card{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:36px;
+  }
+  .contact-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .contact-row:last-child{border-bottom:none;}
+  .contact-row .k{
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .contact-row .v{
+    font-family:'Noto Serif Sinhala', serif;
+    font-size:1.15rem;
+    color:var(--clove);
+    font-weight:500;
+  }
+  .contact-row .v a{color:var(--chili);}
+  .contact-row .v a:hover{text-decoration:underline;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:32px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:0.85rem;
+  }
+  footer strong{color:var(--clove);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px){
+    nav.links{display:none;}
+    .hero{grid-template-columns:1fr; text-align:left;}
+    .hero-badge{justify-self:start; margin-top:20px;}
+    .about{grid-template-columns:1fr;}
+    .specialties-grid{grid-template-columns:1fr;}
+    .contact{grid-template-columns:1fr;}
+    .hours-points{flex-wrap:wrap; gap:24px;}
+    .hpoint{flex:0 0 30%;}
+  }
+  @media (max-width: 480px){
+    .hero{padding:70px 20px 50px;}
+    section{padding:64px 20px;}
+    .nav{padding:16px 20px;}
+  }
+
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--chili);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand"><span class="dot"></span> තරිඳු බුද්ධික</div>
+    <nav class="links">
+      <a href="#about">අප ගැන</a>
+      <a href="#specialties">විශේෂ කෑම</a>
+      <a href="#hours">වේලාව</a>
+      <a href="#contact">සම්බන්ධ වන්න</a>
+    </nav>
+    <a class="call-btn" href="tel:0765380886">076 538 0886</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">ගෙදර රස ශ්‍රී ලාංකික කෑම</div>
+    <h1>සැබෑ රසය, <em>ඔබට ඕනෑ විදිහට</em>, ඔබේ වේලාවට.</h1>
+    <p class="lede">තරිඳු බුද්ධික විසින් අලුත්ම, ගෙදර රස කෑම වර්ග සකසනු ලැබේ — දවසේ බත් කරි වේලාවේ සිට විශේෂ අවස්ථා සඳහා වන කෑම දක්වා — අතින්ම, නිසි කුළුබඩු සමඟ, කිසිම කෙටි මගක් නොගෙන.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="tel:0765380886">ඇණවුම් කිරීමට කතා කරන්න — 076 538 0886</a>
+      <a class="btn-ghost" href="#specialties">විශේෂ කෑම බලන්න</a>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div class="hero-badge-inner">
+      <div class="num">12</div>
+      <div class="unit">පැය වැඩ</div>
+      <div class="cap">ඇණවුම් සහ වෙන්කිරීම් සඳහා විවෘතයි</div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="item"><span class="k">අපගේ ශෙෆ්</span> තරිඳු බුද්ධික</div>
+    <div class="item"><span class="k">ලබාගත හැකි වේලාව</span> දිනකට පැය 12ක්</div>
+    <div class="item"><span class="k">ක්‍රමය</span> ගෙදර හදන, ඕනෑම විදිහට</div>
+    <div class="item"><span class="k">සම්බන්ධ වන්න</span> 076 538 0886</div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="about-quote">
+      "හොඳ කෑමක් හැදෙන්නේ ඉවසීමෙන් — නිවැරදි උණුසුම, නිවැරදි වේලාව, කිසිම ඉක්මන් කිරීමක් නැතුව."
+    </div>
+    <div class="about-text">
+      <p>තරිඳු බුද්ධික කෑම හදන්නේ නියම විදිහටමයි — හෙමින්, අලුත්ම ද්‍රව්‍ය සහ අතින්ම අඹරන ලද කුළුබඩු වලින්. හැම ඇණවුමක්ම වෙන වෙනම හදන නිසා, ඔබේ මේසෙට එන කෑම රස වෙන්නේ ගෙදර හදපු කෑමක් වගේමයි, හෝටල් එකක කෑමක් වගේ නෙවෙයි.</p>
+      <p>එක ලන්ච් පැකට් එකක් වුනත්, පවුලේ රාත්‍රී ආහාරයක් වුනත්, කුඩා එකතුවීමකට කෑම වුනත් — ඇණවුම් ගන්නේත් හදන්නේත් පැය 12ක වැඩ කරන දවසක් පුරාවටයි, ඉතින් හැම වෙලාවකම කෑම හදන්න හරියට වේලාව තියෙනවා, ඉක්මනට හදන්න ඕන නෑ.</p>
+      <p>මොකක් හදන්න ඕනද, කීදෙනෙක්ටද, කවදාද ඕන කියලා කතා කරන්න කෙලින්ම අමතන්න.</p>
+    </div>
+  </div>
+</section>
+
+<section id="specialties" style="background:var(--cream); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>මෙතන හදන කෑම</h2>
+      <p>වැඩිපුරම ඉල්ලුම් කරන කෑම වර්ග කිහිපයක් — හැම ඇණවුමක්ම අලුතින් හදන නිසා, ඔබට ඕන විදිහට මෙනුව වෙනස් කරගන්නත් පුළුවන්.</p>
+    </div>
+    <div class="specialties-grid">
+      <div class="spec-card">
+        <div class="tag">දෛනික</div>
+        <h3>බත් සහ කරි</h3>
+        <p>සම්පූර්ණ ගෙදර රස කෑමක් — බත්, මස් හෝ මාළු කරියක්, සහ මාරුවෙන් මාරුවට එළවළු කෑම කිහිපයක්.</p>
+      </div>
+      <div class="spec-card">
+        <div class="tag">ශ්‍රී ලාංකික</div>
+        <h3>කොත්තු සහ ෆ්‍රයිඩ් රයිස්</h3>
+        <p>අතින් කපන කොත්තු සහ වොක් එකේ බැදපු රයිස්, ඔබ කැමති බිත්තර, කුකුල් මස් හෝ එළවළු එකතු කරලා.</p>
+      </div>
+      <div class="spec-card">
+        <div class="tag">හෙමින් හදන</div>
+        <h3>කරි සහ දෙවල්ඩ් කෑම</h3>
+        <p>හරියට උයපු කුකුල් මස්, මාළු සහ ඉස්සන් කරි, ලුණු රස කැමති අයට දෙවල්ඩ් කෑම වර්ග ද.</p>
+      </div>
+      <div class="spec-card">
+        <div class="tag">විශේෂ අවස්ථා</div>
+        <h3>කුඩා එකතුවීම්</h3>
+        <p>උපන්දින, දානය, පවුලේ එකතුවීම් සඳහා කෑම — ඔබේ පිරිසේ ප්‍රමාණයට සහ මෙනුවට ගැලපෙන ලෙස සැලසුම් කර.</p>
+      </div>
+      <div class="spec-card">
+        <div class="tag">කෙටි කෑම</div>
+        <h3>ස්නැක්ස් සහ කෙටි කෑම</h3>
+        <p>රෝල්ස්, කට්ලට් සහ කෙටි කෑම අලුතින් හදන — සවස තේ එක සමඟ හෝ කුඩා උත්සවයකට හොඳයි.</p>
+      </div>
+      <div class="spec-card">
+        <div class="tag">ඕනෑම දෙයක්</div>
+        <h3>ඕනෑම දෙයක් අහන්න</h3>
+        <p>විශේෂ දෙයක් හිතේ තියෙනවද? අමතලා කියන්න — වැඩිම ගෙදර රස ඉල්ලීම් සැලසුම් කරගන්න පුළුවන්.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hours" class="hours">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>පැය 12ක වැඩ කරන දවසක්</h2>
+      <p>පහත වේලාව පුරාවටම ඇණවුම් සහ කතා කිරීම් සාදරයෙන් පිළිගනිමු.</p>
+    </div>
+    <div class="hours-track">
+      <div class="rail"></div>
+      <div class="hours-points">
+        <div class="hpoint"><span class="mark"></span><span class="time">උදේ 7</span><span class="label">දවස ආරම්භය</span></div>
+        <div class="hpoint"><span class="mark"></span><span class="time">10.00</span><span class="label">උදේ ඇණවුම්</span></div>
+        <div class="hpoint"><span class="mark"></span><span class="time">1.00</span><span class="label">දිවා ආහාරය හදනවා</span></div>
+        <div class="hpoint"><span class="mark"></span><span class="time">4.00</span><span class="label">සවසට සූදානම</span></div>
+        <div class="hpoint"><span class="mark"></span><span class="time">7.00</span><span class="label">රාත්‍රී ආහාර ඇණවුම්</span></div>
+        <div class="hpoint"><span class="mark"></span><span class="time">රාත්‍රී 7</span><span class="label">දවස අවසානය</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <div>
+      <h2>ඇණවුම් කරන්න සූදානම්ද?</h2>
+      <p class="sub">ඔබේ ඇණවුම ගැන කතා කරන්න කෙලින්ම අමතන්න — කීදෙනෙක්ටද, මොනවද ඕන, කවදාට ඕනද කියලා. වේලාව අනුව ඒ දවසේම ඇණවුම් වුනත් සලකා බලනවා.</p>
+      <a class="btn-primary" href="tel:0765380886">076 538 0886 අමතන්න</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-row">
+        <span class="k">අපගේ ශෙෆ්</span>
+        <span class="v">තරිඳු බුද්ධික</span>
+      </div>
+      <div class="contact-row">
+        <span class="k">දුරකථන අංකය</span>
+        <span class="v"><a href="tel:0765380886">076 538 0886</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="k">ලබාගත හැකි වේලාව</span>
+        <span class="v">දිනකට පැය 12ක්</span>
+      </div>
+      <div class="contact-row">
+        <span class="k">වඩාත් සුදුසු</span>
+        <span class="v">ගෙදර කෑම සහ කුඩා උත්සව</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>තරිඳු බුද්ධික</strong> — ගෙදර රස කෑම &nbsp;·&nbsp; 076 538 0886
+</footer>
+<footer>
+    Made with <span class="heart">♥</span> by P.K. Eesha Mandiw Panthuja
+  </footer>
+
+
+</body>
+</html>
